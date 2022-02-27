@@ -12,6 +12,7 @@ struct Stats compute_statistics(const float* numberset, int setlength) {
     s.max = 0;
     int loopCntr_u16 = 0;
     int sum = 0;
+    int dividend, rem = 0;
     for(loopCntr_u16 = 0; loopCntr_u16 < setlength; loopCntr_u16++)
     {
       if(numberset[loopCntr_u16] > numberset[loopCntr_u16 + 1])
@@ -24,7 +25,18 @@ struct Stats compute_statistics(const float* numberset, int setlength) {
       }
         sum = sum + numberset[loopCntr_u16];
     }
-    s.average = sum/setlength;
+    if(s.max != 0)
+    {
+      s.average = 0;
+      s.min = 0;
+      s.max = 0;
+    }
+    else
+    {
+        dividend = sum/setlength;
+        rem      = sum%setlength;
+        s.average = dividend + rem;
+    }
     
     return s;
 }
