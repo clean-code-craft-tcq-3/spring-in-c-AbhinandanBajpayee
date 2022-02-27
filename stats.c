@@ -24,5 +24,5 @@ struct Stats compute_statistics(const float* numberset, int setlength) {
 
 int emailAlertCallCount = 0;
 int ledAlertCallCount = 0;
-int emailAlerter = 0;
-int ledAlerter = 0;
+alerter_funcptr emailAlerter = 0;
+alerter_funcptr ledAlerter = 0;
