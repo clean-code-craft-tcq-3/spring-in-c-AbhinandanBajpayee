@@ -35,6 +35,12 @@ struct Stats compute_statistics(const float* numberset, int setlength) {
      s.max = max;
      s.min = min;
     }
+    else
+    {
+     s.average = 0;
+     s.max = 0;
+     s.min = 0;
+    }
     
     return s;
 }
