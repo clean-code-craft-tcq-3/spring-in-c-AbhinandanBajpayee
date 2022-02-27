@@ -13,19 +13,25 @@ struct Stats compute_statistics(const float* numberset, int setlength) {
     s.max = 0;
     int loopCntr_u16 = 0;
     float sum = 0;
+    float max = 0;
+    float min = 0 ;
+    max = *(numberset+0);
+    min = *(numberset+0)
     for(loopCntr_u16 = 0; loopCntr_u16 < setlength; loopCntr_u16++)
     {
-      if(*(numberset+loopCntr_u16) > *(numberset + (loopCntr_u16 + 1)))
+      if(*(numberset+loopCntr_u16) > max)
       {
-          s.max = *(numberset+loopCntr_u16);
+          max = *(numberset+loopCntr_u16);
       }
       else
       {
-          s.min = *(numberset+loopCntr_u16);
+          min = *(numberset+loopCntr_u16);
       }
         sum = sum + *(numberset+loopCntr_u16);
     }
-     s.average = sum;
+     s.average = sum/setlength;
+     s.max = max;
+     s.min = min;
     
     return s;
 }
