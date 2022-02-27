@@ -27,7 +27,7 @@ struct Stats compute_statistics(const float* numberset, int setlength) {
     }
 
 
-        s.average = (float)sum/setlength;
+        s.average = (sum/setlength) + (sum%setlength);
     
     return s;
 }
