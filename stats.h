@@ -2,7 +2,7 @@
 struct Stats{
   float average;
   float min;
-  flaot max;
+  float max;
 };
 struct Stats compute_statistics(const float* numberset, int setlength);
 
