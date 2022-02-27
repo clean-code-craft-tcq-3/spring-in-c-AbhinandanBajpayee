@@ -1,11 +1,17 @@
 #include "stats.h"
 
+int emailAlertCallCount = 0;
+int ledAlertCallCount = 0;
+alerter_funcptr emailAlerter = 0;
+alerter_funcptr ledAlerter = 0;
+
 struct Stats compute_statistics(const float* numberset, int setlength) {
     struct Stats s;
     s.average = 0;
     s.min = 0;
     s.max = 0;
     int loopCntr_u16 = 0;
+    int sum = 0;
     for(loopCntr_u16 = 0; loopCntr_u16 < setlength; loopCntr_u16++)
     {
       if(numberset[loopCntr_u16] > numberset[loopCntr_u16 + 1])
@@ -16,8 +22,9 @@ struct Stats compute_statistics(const float* numberset, int setlength) {
       {
           s.min = numberset[loopCntr_u16];
       }
+        sum = sum + numberset[loopCntr_u16];
     }
-    s.average = (s.max + s.min)/2;
+    s.average = sum/setlength;
     
     return s;
 }
@@ -26,12 +33,13 @@ void check_and_alert(float maxThreshold, alerter_funcptr alerters[], struct Stat
 {
    if(computedStats.max > maxThreshold)
    {
-      emailAlerter = 1;
-      emailAlertCallCount++; 
+      if(alerters[0] != null)
+      {
+         emailAlertCallCount++;
+      }
+      if(alerters[1] != null)
+      {
+         ledAlertCallCount++;
+      }       
    }
 }
-
-int emailAlertCallCount = 0;
-int ledAlertCallCount = 0;
-alerter_funcptr emailAlerter = 0;
-alerter_funcptr ledAlerter = 0;
