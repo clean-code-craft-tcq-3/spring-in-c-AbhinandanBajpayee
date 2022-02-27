@@ -1,4 +1,5 @@
 #include "stats.h"
+#include <math.h>
 
 int emailAlertCallCount = 0;
 int ledAlertCallCount = 0;
@@ -26,9 +27,9 @@ struct Stats compute_statistics(const float* numberset, int setlength) {
     }
     if(s.max != 0)
     {
-      s.average = NAN;
-      s.min = NAN;
-      s.max = NAN;
+      s.average = 0;
+      s.min = 0;
+      s.max = 0;
     }
     else
     {
