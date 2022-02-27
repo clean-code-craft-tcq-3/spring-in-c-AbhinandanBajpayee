@@ -12,32 +12,28 @@ struct Stats compute_statistics(const float* numberset, int setlength) {
     s.max = 0;
     int loopCntr_u16 = 0;
     int sum = 0;
-    int dividend, rem = 0;
     for(loopCntr_u16 = 0; loopCntr_u16 < setlength; loopCntr_u16++)
     {
-      if(numberset[loopCntr_u16] > numberset[loopCntr_u16 + 1])
+      if(*(numberset+loopCntr_u16) > *(numberset + (loopCntr_u16 + 1)))
       {
-          s.max = numberset[loopCntr_u16];
+          s.max = *(numberset+loopCntr_u16);
       }
       else
       {
-          s.min = numberset[loopCntr_u16];
+          s.min = *(numberset+loopCntr_u16);
       }
-        sum = sum + numberset[loopCntr_u16];
+        sum = sum + *(numberset+loopCntr_u16);
     }
     if(s.max != 0)
     {
-      s.average = 0;
-      s.min = 0;
-      s.max = 0;
+      s.average = NAN;
+      s.min = NAN;
+      s.max = NAN;
     }
     else
     {
-        dividend = sum/setlength;
-        rem      = sum%setlength;
-        s.average = dividend + rem;
-    }
-    
+        s.average = (float)sum/setlength;
+    }    
     return s;
 }
 
