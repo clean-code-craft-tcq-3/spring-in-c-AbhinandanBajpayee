@@ -23,7 +23,7 @@ TEST_CASE("reports average, minimum and maximum Test2") {
     float epsilon = 0.001;
     REQUIRE(abs(computedStats.average - 6.0) < epsilon);
     REQUIRE(abs(computedStats.max - 8.1) < epsilon);
-    REQUIRE(abs(computedStats.min - 3.2) < epsilon);
+    REQUIRE(abs(computedStats.min - 3.8) < epsilon);
 }
 
 TEST_CASE("average is NaN for empty array") {
