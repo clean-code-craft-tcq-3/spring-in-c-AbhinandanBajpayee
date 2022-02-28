@@ -57,7 +57,7 @@ TEST_CASE("raises alerts when max is greater than threshold") {
 }
 
 TEST_CASE("raises alerts when max is greater than threshold Test 4") {
-    alerter_funcptr alerters[] = {ledAlerter,0};
+    alerter_funcptr alerters[] = {emailAlerter,0};
 
     float numberset[] = {99.8, 34.2, 4.5};
     int setlength = sizeof(numberset) / sizeof(numberset[0]);
@@ -70,7 +70,7 @@ TEST_CASE("raises alerts when max is greater than threshold Test 4") {
     REQUIRE(ledAlertCallCount == 0);
 }
 TEST_CASE("raises alerts when max is greater than threshold Test 5") {
-    alerter_funcptr alerters[] = {0,emailAlerter};
+    alerter_funcptr alerters[] = {0,ledAlerter};
 
     float numberset[] = {99.8, 34.2, 4.5};
     int setlength = sizeof(numberset) / sizeof(numberset[0]);
