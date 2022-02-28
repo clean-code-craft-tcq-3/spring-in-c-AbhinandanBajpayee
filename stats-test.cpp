@@ -55,29 +55,3 @@ TEST_CASE("raises alerts when max is greater than threshold") {
     REQUIRE(emailAlertCallCount == 1);
     REQUIRE(ledAlertCallCount == 1);
 }
-
-TEST_CASE("raises alerts when max is greater than threshold Test 4") {
-    alerter_funcptr alerters[] = {emailAlerter,0};
-
-    float numberset[] = {99.8, 34.2, 4.5};
-    int setlength = sizeof(numberset) / sizeof(numberset[0]);
-    Stats computedStats = compute_statistics(numberset, setlength);
-
-    const float maxThreshold = 10.2;
-    check_and_alert(maxThreshold, alerters, computedStats);
-
-    REQUIRE(emailAlertCallCount == 1);
-    REQUIRE(ledAlertCallCount == 0);
-}
-TEST_CASE("raises alerts when max is greater than threshold Test 5") {
-    alerter_funcptr alerters[] = {0,ledAlerter};
-
-    float numberset[] = {99.8, 34.2, 4.5};
-    int setlength = sizeof(numberset) / sizeof(numberset[0]);
-    Stats computedStats = compute_statistics(numberset, setlength);
-
-    const float maxThreshold = 10.2;
-    check_and_alert(maxThreshold, alerters, computedStats);
-    REQUIRE(emailAlertCallCount == 0);
-    REQUIRE(ledAlertCallCount == 1);
-}
