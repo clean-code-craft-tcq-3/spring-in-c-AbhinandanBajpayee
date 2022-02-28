@@ -13,4 +13,3 @@ extern int emailAlertCallCount;
 extern int ledAlertCallCount;
 extern alerter_funcptr emailAlerter;
 extern alerter_funcptr ledAlerter;
-
