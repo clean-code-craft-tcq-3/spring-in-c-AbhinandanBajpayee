@@ -38,6 +38,8 @@ struct Stats compute_statistics(const float* numberset, int setlength) {
           sum = sum + *(numberset+loopCntr_u16);
        }
       s.average = sum/setlength;
+      s.max = max;
+      s.min = min;
     }
     else
     {
@@ -50,13 +52,14 @@ struct Stats compute_statistics(const float* numberset, int setlength) {
 
 void check_and_alert(float maxThreshold, alerter_funcptr alerters[], struct Stats computedStats)
 {
+  alerter_funcptr CheckReturn = 1;
    if(computedStats.max > maxThreshold)
    {
-       if( 1 == alerters[0])
+       if( CheckReturn == alerters[0])
        {
          emailAlertCallCount = 1;
        }
-       if( 1 == alerters[1])
+       if( CheckReturn == alerters[1])
        {
           ledAlertCallCount = 1;
        }
