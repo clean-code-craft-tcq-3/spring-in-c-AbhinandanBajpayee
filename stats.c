@@ -44,24 +44,19 @@ struct Stats compute_statistics(const float* numberset, int setlength) {
 
 void emailAlerter()
 {
-
+   emailAlertCallCount++;
 }
 void ledAlerter()
 {
-
+  ledAlertCallCount++;
 }
 
 void check_and_alert(float maxThreshold, alerter_funcptr alerters[], struct Stats computedStats)
 {
    if(computedStats.max > maxThreshold)
    { 
-       if( 0 != alerters[0])
-       {
-           emailAlertCallCount++;
-       }
-       if( 0 != alerters[1])
-       {
-           ledAlertCallCount++;
-       }
+     alerters[0]();  
+       alerters[1](); 
+       
    }
 }
