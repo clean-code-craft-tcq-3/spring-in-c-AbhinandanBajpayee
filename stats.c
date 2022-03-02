@@ -3,14 +3,6 @@
 
 int emailAlertCallCount = 0;
 int ledAlertCallCount = 0;
-alerter_funcptr emailAlerter()
-{
-  emailAlertCallCount += 1;
-}
-alerter_funcptr ledAlerter()
-{
-  ledAlertCallCount += 1;
-}
 
 struct Stats compute_statistics(const float* numberset, int setlength) {
     struct Stats s;
@@ -48,6 +40,15 @@ struct Stats compute_statistics(const float* numberset, int setlength) {
      s.min = 0;
     }    
     return s;
+}
+
+void emailAlerter()
+{
+  emailAlertCallCount = emailAlertCallCount+1;
+}
+void ledAlerter()
+{
+  ledAlertCallCount = ledAlertCallCount+1;
 }
 
 void check_and_alert(float maxThreshold, alerter_funcptr alerters[], struct Stats computedStats)
