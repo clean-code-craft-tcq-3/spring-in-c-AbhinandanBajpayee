@@ -3,11 +3,11 @@
 
 int emailAlertCallCount = 0;
 int ledAlertCallCount = 0;
-void emailAlerter()
+alerter_funcptr emailAlerter()
 {
   emailAlertCallCount += 1;
 }
-void ledAlerter()
+alerter_funcptr ledAlerter()
 {
   ledAlertCallCount += 1;
 }
